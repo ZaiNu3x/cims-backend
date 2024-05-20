@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: cims-backend
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/cims_schema
+    username: root
+    password: root
+
+  jpa:
+    show-sql: true
+
+    hibernate:
+      ddl-auto: create
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
