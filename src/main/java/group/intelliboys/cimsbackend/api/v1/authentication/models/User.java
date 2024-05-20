@@ -6,11 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
-import java.util.List;
+
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -18,10 +15,11 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public class User {
     @Id
     @Column(length = 30)
     private String username;
+
     @Column(length = 72, nullable = false)
     private String password;
 
@@ -29,38 +27,28 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
+    @Column(length = 30, nullable = false)
+    private String lastName;
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+    @Column(length = 30, nullable = false)
+    private String firstName;
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
+    @Column(length = 30)
+    private String middleName;
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+    @Column(length = 6, nullable = false)
+    private String sex;
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+    @Column(nullable = false)
+    private LocalDate birthDate;
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+    @Column(nullable = false)
+    private byte age;
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+    @Column(length = 128, nullable = false)
+    private String address;
+
+    @Column
+    private byte[] profilePic;
+
 }
