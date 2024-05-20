@@ -1,6 +1,7 @@
 package group.intelliboys.cimsbackend.api.v1.authentication.dto;
 
 import group.intelliboys.cimsbackend.api.v1.authentication.models.enums.Role;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

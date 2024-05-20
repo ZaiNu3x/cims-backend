@@ -5,6 +5,7 @@ import group.intelliboys.cimsbackend.configs.security.services.UserDetailsServic
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,6 +30,7 @@ public class WebSecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((request) -> request
+                        .requestMatchers(HttpMethod.POST, "/login").permitAll()
                         .anyRequest()
                         .authenticated())
                 .sessionManagement((session) -> session
