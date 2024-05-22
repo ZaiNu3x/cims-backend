@@ -1,6 +1,6 @@
-package group.intelliboys.cimsbackend.api.v1.authentication.models;
+package group.intelliboys.cimsbackend.api.v1.user.models;
 
-import group.intelliboys.cimsbackend.api.v1.authentication.models.enums.Role;
+import group.intelliboys.cimsbackend.api.v1.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

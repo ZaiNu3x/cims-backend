@@ -1,6 +1,6 @@
 package group.intelliboys.cimsbackend.configs.security.services;
 
-import group.intelliboys.cimsbackend.api.v1.authentication.repositories.UserRepository;
+import group.intelliboys.cimsbackend.api.v1.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

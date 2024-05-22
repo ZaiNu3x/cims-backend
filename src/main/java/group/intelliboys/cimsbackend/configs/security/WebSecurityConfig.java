@@ -31,6 +31,7 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/user/registration/find/exists/**").permitAll()
                         .anyRequest()
                         .authenticated())
                 .sessionManagement((session) -> session
