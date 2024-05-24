@@ -18,8 +18,13 @@ public class UserController {
 
     @GetMapping("/find/exists/{username}")
     public ResponseEntity<Boolean> isUserExists(@PathVariable("username") String username) {
-        System.out.println(username);
         boolean isExists = userService.isUsernameExists(username);
+        return new ResponseEntity<>(isExists, HttpStatus.OK);
+    }
+
+    @GetMapping("/find/email/exists/{email}")
+    public ResponseEntity<Boolean> isEmailExists(@PathVariable("email") String email) {
+        boolean isExists = userService.isEmailExists(email);
         return new ResponseEntity<>(isExists, HttpStatus.OK);
     }
 }

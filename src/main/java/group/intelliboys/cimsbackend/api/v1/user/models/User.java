@@ -2,6 +2,7 @@ package group.intelliboys.cimsbackend.api.v1.user.models;
 
 import group.intelliboys.cimsbackend.api.v1.user.enums.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -47,6 +48,10 @@ public class User {
 
     @Column(length = 128, nullable = false)
     private String address;
+
+    @Column(length = 128, nullable = false)
+    @Email
+    private String email;
 
     @Column
     private byte[] profilePic;
