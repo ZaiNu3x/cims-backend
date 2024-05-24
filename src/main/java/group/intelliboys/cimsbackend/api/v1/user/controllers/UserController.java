@@ -1,5 +1,6 @@
 package group.intelliboys.cimsbackend.api.v1.user.controllers;
 
+import group.intelliboys.cimsbackend.api.v1.registration.services.RegistrationOtpService;
 import group.intelliboys.cimsbackend.api.v1.user.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,15 +17,23 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RegistrationOtpService registrationOtpService;
+
     @GetMapping("/find/exists/{username}")
     public ResponseEntity<Boolean> isUserExists(@PathVariable("username") String username) {
         boolean isExists = userService.isUsernameExists(username);
         return new ResponseEntity<>(isExists, HttpStatus.OK);
     }
 
-    @GetMapping("/find/email/exists/{email}")
-    public ResponseEntity<Boolean> isEmailExists(@PathVariable("email") String email) {
+    @GetMapping("/find/email/exists/{email}/{formId}")
+    public ResponseEntity<Boolean> isEmailExists(@PathVariable("formId") String formId, @PathVariable("email") String email) {
         boolean isExists = userService.isEmailExists(email);
+
+        if(!isExists) {
+            System.out.println(userService.sendOtp(formId, email));
+        }
+
         return new ResponseEntity<>(isExists, HttpStatus.OK);
     }
 }
