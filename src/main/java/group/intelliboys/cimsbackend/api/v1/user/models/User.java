@@ -53,7 +53,8 @@ public class User {
     @Email
     private String email;
 
-    @Column
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] profilePic;
 
 }

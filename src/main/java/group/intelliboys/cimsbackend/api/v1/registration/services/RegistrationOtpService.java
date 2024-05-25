@@ -5,7 +5,6 @@ import group.intelliboys.cimsbackend.api.v1.registration.repositories.Registrati
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -23,9 +22,12 @@ public class RegistrationOtpService {
 
             registrationOtpRepository.save(registrationOtp);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean validateOtp(String formId, String otp) {
+        return registrationOtpRepository.existsByFormIdAndOtp(formId, otp);
     }
 }

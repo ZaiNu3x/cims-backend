@@ -1,6 +1,8 @@
 package group.intelliboys.cimsbackend.api.v1.user.services;
 
 import group.intelliboys.cimsbackend.api.v1.registration.services.RegistrationOtpService;
+import group.intelliboys.cimsbackend.api.v1.user.models.User;
+import group.intelliboys.cimsbackend.api.v1.user.models.UserDto;
 import group.intelliboys.cimsbackend.api.v1.user.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -52,6 +54,16 @@ public class UserService {
             }
 
         } else {
+            return false;
+        }
+    }
+
+    public boolean createUser(User user) {
+        try {
+            userRepository.save(user);
+            return true;
+        }
+        catch (Exception e) {
             return false;
         }
     }

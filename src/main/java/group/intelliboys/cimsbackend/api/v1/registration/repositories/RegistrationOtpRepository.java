@@ -8,4 +8,5 @@ import java.util.Optional;
 @Repository
 public interface RegistrationOtpRepository extends JpaRepository<RegistrationOtp, String> {
     Optional<RegistrationOtp> findByFormIdAndOtp(String formId, String otp);
+    boolean existsByFormIdAndOtp(String formId, String otp);
 }
